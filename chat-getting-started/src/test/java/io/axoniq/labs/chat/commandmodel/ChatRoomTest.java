@@ -5,6 +5,7 @@ import org.axonframework.test.aggregate.AggregateTestFixture;
 import org.junit.Before;
 import org.junit.Test;
 
+// Test for single Aggregate ChatRoom
 public class ChatRoomTest {
     private AggregateTestFixture<ChatRoom> testFixture;
 

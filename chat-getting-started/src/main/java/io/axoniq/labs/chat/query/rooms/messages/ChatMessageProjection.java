@@ -1,8 +1,12 @@
 package io.axoniq.labs.chat.query.rooms.messages;
 
+import io.axoniq.labs.chat.coreapi.MessagePostedEvent;
+import org.axonframework.eventhandling.EventHandler;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.web.bind.annotation.*;
+
+import java.time.Instant;
 
 @RestController
 @RequestMapping("/rooms/{roomId}/messages")
@@ -21,6 +25,13 @@ public class ChatMessageProjection {
         return repository.findAllByRoomIdOrderByTimestampDesc(roomId, new PageRequest(pageId, pageSize));
     }
 
-    // TODO: Create some event handlers that update this model when necessary
+    @EventHandler
+    public void handleMessagePostedEvent(MessagePostedEvent event){
+
+        ChatMessage chatMessage =
+                new ChatMessage(event.getParticipant(), event.getRoomId(),
+                        event.getMessage(), Instant.now().toEpochMilli());
+        this.repository.save(chatMessage);
+    }
 
 }

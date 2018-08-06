@@ -5,6 +5,7 @@ import org.axonframework.commandhandling.CommandHandler;
 import org.axonframework.commandhandling.model.AggregateIdentifier;
 import org.axonframework.eventsourcing.EventSourcingHandler;
 import org.axonframework.spring.stereotype.Aggregate;
+import org.springframework.context.annotation.Profile;
 import org.springframework.util.Assert;
 
 import java.util.HashSet;
@@ -13,6 +14,7 @@ import java.util.Set;
 import static org.axonframework.commandhandling.model.AggregateLifecycle.apply;
 
 @Aggregate
+@Profile("command")
 public class ChatRoom {
 
     @AggregateIdentifier
