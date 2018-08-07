@@ -26,6 +26,7 @@ public class ChatRoom {
 
     @CommandHandler
     public ChatRoom(CreateRoomCommand command) {
+        System.out.println("Created room " + command.getRoomId());
         apply(new RoomCreatedEvent(command.getRoomId(), command.getName()));
     }
 

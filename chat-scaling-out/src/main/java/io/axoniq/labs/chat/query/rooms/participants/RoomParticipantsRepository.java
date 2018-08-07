@@ -9,4 +9,5 @@ public interface RoomParticipantsRepository extends JpaRepository<RoomParticipan
     List<RoomParticipant> findRoomParticipantsByRoomId(String roomId);
 
     void deleteByParticipantAndRoomId(String participant, String roomId);
+
 }

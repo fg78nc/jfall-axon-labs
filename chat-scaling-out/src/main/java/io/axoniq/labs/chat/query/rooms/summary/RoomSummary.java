@@ -38,4 +38,12 @@ public class RoomSummary {
     public int getParticipants() {
         return participants;
     }
+
+    @Override
+    public String toString() {
+        return "RoomSummary{" +
+                "roomId='" + roomId + '\'' +
+                ", name='" + name + '\'' +
+                '}';
+    }
 }
